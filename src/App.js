@@ -1,7 +1,21 @@
-function App() {
-  const dom = <h2>Woo!</h2>
-  const input = <input type="text" onChange={() => { console.log('i am changed') }} />
-  return input
+const App = () =>  {
+  return (
+    <div>
+      <Cat />
+      <Cat />
+      <Cat />
+      <Cat />
+    </div>
+  )
+}
+
+
+const Cat = () => {
+  return (
+    <div>
+      Meow!
+    </div>
+  )
 }
 
 export default App;
