@@ -1,25 +1,29 @@
-import React from 'react';
-import ReactDOM from 'react-dom';
-import { createStore, applyMiddleware } from 'redux'
-import { Provider } from 'react-redux'
-import thunk from 'redux-thunk'
-import { BrowserRouter, Route, Switch } from 'react-router-dom'
-import { composeWithDevTools } from 'redux-devtools-extension'
+import React from "react";
+import ReactDOM from "react-dom";
+import { createStore, applyMiddleware } from "redux";
+import { Provider } from "react-redux";
+import thunk from "redux-thunk";
+import { BrowserRouter, Route, Switch } from "react-router-dom";
+import { composeWithDevTools } from "redux-devtools-extension";
+import MuiTheeProvider from "material-ui/styles/MuiThemeProvider";
 
-import './index.css';
-import reducer from './reducers'
-import EventsIndex from './components/events_index';
-import EventsNew from './components/events_new';
-import EventsShow from './components/events_show';
-import reportWebVitals from './reportWebVitals';
+import "./index.css";
+import reducer from "./reducers";
+import EventsIndex from "./components/events_index";
+import EventsNew from "./components/events_new";
+import EventsShow from "./components/events_show";
+import reportWebVitals from "./reportWebVitals";
 
-const enhancer = process.env.NODE_ENV === 'development' ?
-  composeWithDevTools(applyMiddleware(thunk)) : applyMiddleware(thunk)
-const store = createStore(reducer, enhancer)
+const enhancer =
+  process.env.NODE_ENV === "development"
+    ? composeWithDevTools(applyMiddleware(thunk))
+    : applyMiddleware(thunk);
+const store = createStore(reducer, enhancer);
 
 ReactDOM.render(
-  <Provider store={store}>
-    {/*<React.StrictMode>*/}
+  <MuiTheeProvider>
+    <Provider store={store}>
+      {/*<React.StrictMode>*/}
       <BrowserRouter>
         <Switch>
           <Route path="/events/new" component={EventsNew} />
@@ -28,9 +32,10 @@ ReactDOM.render(
           <Route exact path="/events" component={EventsIndex} />
         </Switch>
       </BrowserRouter>
-    {/*</React.StrictMode>*/}
-  </Provider>,
-  document.getElementById('root')
+      {/*</React.StrictMode>*/}
+    </Provider>
+  </MuiTheeProvider>,
+  document.getElementById("root")
 );
 
 // If you want to start measuring performance in your app, pass a function
